@@ -84,5 +84,3 @@
         manage_dir: true
         key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
         state: present
-#NOTE: Login as ec2-user on remote server
-#Example: ssh ec2-user@IP
