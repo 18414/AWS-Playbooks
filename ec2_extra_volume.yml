@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  become: true
+  tasks: 
+    - name: create ec2
+      ec2: 
+        region: us-east-2
+        instance_type: t2.micro
+        state: present
+        key_name: aws_final
+        vpc_subnet_id: subnet-0d79430f266ac41a9
+        image: ami-0f2b4fc905b0bd1f1
+        assign_public_ip: yes    
+        volumes: 
+          - device_name: /dev/xvda
+            volume_type: gp2
+            volume_size: 10
+        instance_tags: 
+          Name: WEB
+      register: ec2
+
+
