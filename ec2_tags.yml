@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  become: true
+  vars_files: 
+  - /home/ansible/AWS-Playbooks/keys.yml
+  tasks: 
+    - name: Tag ec2 instance 
+      ec2_tag:
+        aws_access_key: "{{ AWS_ACCESS_KEY_ID }}"
+        aws_secret_key: "{{ AWS_SECRET_ACCESS_KEY }}"
+        ec2_region: "{{ AWS_REGION }}"
+        resource: i-092afb2634aba73dc
+        state: present
+        tags: 
+          Name: Master
+          env: kube
+        
+
