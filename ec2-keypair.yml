@@ -9,16 +9,21 @@
         aws_access_key: "{{ AWS_ACCESS_KEY_ID }}"
         aws_secret_key: "{{ AWS_SECRET_ACCESS_KEY }}"
         ec2_region: "{{ AWS_REGION }}"
-        name: xyzkey
+        material: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
+        name: baba
         state: present
-        key_material: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
       register: mbkey
 
     - debug: msg={{ mbkey }}
-
+    
     - name: write new private key to file locally
-      lineinfile: 
-        create: yes
-        path: /home/ansible/my_keypair.pem
-        line: "{{ mbkey.key.private_key }}"
+      copy: 
+        content: "{{ mbkey.key.private_key }}"
+        dest: /home/ansible/my_keypair.pem
         mode: 0600
+#    - name: write new private key to file locally
+ #     lineinfile: 
+  #      create: yes
+   #     path: /home/ansible/my_keypair.pem
+    #    line: "{{ mbkey.key.private_key }}"
+     #   mode: 0600
