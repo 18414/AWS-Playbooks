@@ -66,13 +66,19 @@
         ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
       loop: "{{ ec2.instances }}"
 
+    - name: Add group name into inventory
+      lineinfile:
+        path: /etc/ansible/hosts
+        insertafter: 'localhost'
+        line: "[webgroup]"
+
+
     - name: Make entry into inventory perm
-      lineinfile: dest=/etc/ansible/hosts
-                  regexp={{ item.public_ip }}
-                  insertafter="[webgroup]"
-                  line={{ item.public_ip }}
-                  firstmatch=yes
-                  state=present  
+      lineinfile: 
+        path: /etc/ansible/hosts
+        insertafter: "[webgroup]"
+        line: "{{ item.public_ip }}"
+        state: present  
       with_items: "{{ ec2.instances }}"
 
     - name: Add group name into inventory 
