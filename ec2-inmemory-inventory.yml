@@ -38,8 +38,8 @@
         image: ami-0015b9ef68c77328d #CentOS7 community work
         assign_public_ip: yes
         wait: yes
-        count: 3
-        instance_type: t2.micro
+        count: 2 
+        instance_type: t2.xlarge
         vpc_subnet_id: subnet-0bae8625
         group: ASGSG
       register: ec2
