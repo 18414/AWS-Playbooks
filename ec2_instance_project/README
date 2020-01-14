@@ -11,7 +11,7 @@ Note:
 
 2. You dont need create aws.pem file, therefore, it will created automatically as we have mentioned in the playbook.
 
-3. These all files are invisible keys.yml .pem .pass and .pass files. However, I excluded them. All files should at same locotion.
+3. These all files are invisible keys.yml .pem and .pass files. However, I excluded them. All files should at same locotion.
 
 4. Please make sure that all variables should in place as per your requirement like AMI-ID instance-type count & ansible_user/remote_user.
 
