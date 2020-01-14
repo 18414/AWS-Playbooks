@@ -4,7 +4,7 @@
   become: true
   debugger: on_failed
   vars_files: 
-    - /home/ansible/AWS-Playbooks/keys.yml
+    - keys.yml
   tasks: 
     - name: Create keypair
       ec2_key: 
@@ -20,7 +20,7 @@
     - name: Save private key
       lineinfile:  
         create: yes
-        path: /home/ansible/aws.pem 
+        path: aws.pem 
         line: "{{ ec2keyvar.key.private_key }}"
         mode: 0600
         owner: ansible
