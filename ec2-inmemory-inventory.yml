@@ -6,7 +6,7 @@
     - /home/ansible/AWS-Playbooks/keys.yml
   vars_prompt: 
     - name: imageid
-      prompt: "Please enter the AMI ID [ami-0015b9ef68c77328d - CentOS7 community work] [ami-04763b3055de4860b - Ubuntu Server 16.04 LTS]"
+      prompt: "Please enter the AMI ID [ami-0015b9ef68c77328d - CentOS7 community work] [ami-00dc04f083786bd2d - CentOS 8 LEMP Stack community] [ ami-0e7ad70170b787201 - CentOS8 market] [Red Hat 8 (RHEL 8) LAMP Stack - ami-0d636a38454c48317 ] [ami-04763b3055de4860b - Ubuntu Server 16.04 LTS]"
       private: no
 
     - name: remoteu 
@@ -19,7 +19,7 @@
         aws_access_key: "{{ AWS_ACCESS_KEY_ID }}"
         aws_secret_key: "{{ AWS_SECRET_ACCESS_KEY }}"
         ec2_region: "{{ AWS_REGION }}"
-        name: pkey
+        name: bny1
         state: present
       register: ec2keyvar
 
@@ -41,7 +41,7 @@
         aws_access_key: "{{ AWS_ACCESS_KEY_ID }}"
         aws_secret_key: "{{ AWS_SECRET_ACCESS_KEY }}"
         ec2_region: "{{ AWS_REGION }}"
-        key_name: pkey
+        key_name: bny1
         image: "{{ imageid }}"  
         assign_public_ip: yes
         wait: yes
